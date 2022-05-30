@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+# from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
 
@@ -14,10 +14,10 @@ def home(request):
     return render(request, "blog/home.html", context)
 
 
-def api(request):
-    data = {
-        'title': 'مقاله اول',
-        'id': 20,
-        'slug': 'first-article'
-    }
-    return JsonResponse(data)
+# def api(request):
+#     data = {
+#         'title': 'مقاله اول',
+#         'id': 20,
+#         'slug': 'first-article'
+#     }
+#     return JsonResponse(data)
