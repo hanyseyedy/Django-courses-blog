@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from .models import Articles
 
 # Create your views here.
 
@@ -7,11 +8,16 @@ from django.http import HttpResponse, JsonResponse
 def home(request):
     # return HttpResponse("hello world!")
     context = {
-        'username': 'hany',
-        'age': 37,
-        'job': 'programer'
+        "articles": Articles.objects.filter(status='p').order_by('-publish')
     }
     return render(request, "blog/home.html", context)
+
+
+def detail(request, slug):
+    context = {
+        "article": Articles.objects.get(slug=slug)
+    }
+    return render(request, "blog/detail.html", context)
 
 
 def api(request):
