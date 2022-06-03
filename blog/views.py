@@ -17,7 +17,7 @@ def detail(request, slug):
     context = {
         "article": Articles.objects.get(slug=slug)
     }
-    return render(request, "blog/single.html", context)
+    return render(request, "blog/detail.html", context)
 
 
 def api(request):

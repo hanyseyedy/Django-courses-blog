@@ -1,19 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'blog/base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail</title>
-</head>
+{% block title %} | {{article.title}}{% endblock %}
 
-<body style="text-align: center; width:100%;">
-    <h1>{{article.title}}</h1>
-    <img src="{{article.thumbnail.url}}" alt="{{article.title}}">
-    <p><small>{{article.publish}}</small></p>
-    <p>{{article.description}}</p>
+{% block main %}
 
-</body>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('{{article.thumbnail.url}}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>{{article.title}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
-</html>
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                {{article.description|linebreaks}}
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock %}
