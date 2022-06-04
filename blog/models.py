@@ -7,7 +7,7 @@ from django.utils import timezone
 # Create your models here.
 
 
-class Articles(models.Model):
+class Article(models.Model):
     STATUS_CHOISES = (
         ('d', "Draft"),
         ('p', 'Published')
