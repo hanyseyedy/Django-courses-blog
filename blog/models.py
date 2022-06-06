@@ -9,17 +9,23 @@ from django.utils import timezone
 
 class Article(models.Model):
     STATUS_CHOISES = (
-        ('d', "Draft"),
-        ('p', 'Published')
+        ('d', "پیش‌نویس"),
+        ('p', 'منتشر شده')
     )
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=100, unique=True)
-    description = models.TextField()
-    thumbnail = models.ImageField(upload_to="images")
-    publish = models.DateTimeField(default=timezone.now)
+    title = models.CharField(max_length=200, verbose_name="عنوان")
+    slug = models.SlugField(max_length=100, unique=True, verbose_name="آدرس")
+    description = models.TextField(verbose_name="متن مقاله")
+    thumbnail = models.ImageField(upload_to="images", verbose_name="تصویر")
+    publish = models.DateTimeField(
+        default=timezone.now, verbose_name="تاریخ انتشار")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=1, choices=STATUS_CHOISES)
+    status = models.CharField(
+        max_length=1, choices=STATUS_CHOISES, verbose_name="وضعیت")
+
+    class Meta:
+        verbose_name = "مقاله"
+        verbose_name_plural = "مقالات"
 
     def __str__(self):
         return self.title
