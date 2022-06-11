@@ -32,13 +32,19 @@
                         <a href="#!">هانی سیدی</a>
                         {{article.jpublish}}
                     </p>
+                    <div>
+                        {% for cat in category %}
+                            <a href="#">#{{cat.title}}</a>
+                        {% endfor %}
+                    </div>
                 </div>
                 <!-- Divider-->
                 <hr class="my-4" />
             {% endfor %}
             <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older
-                    Posts →</a></div>
+            <div class="d-flex justify-content-end mb-4 pager-botton">
+                <a class="btn btn-primary text-uppercase" href="#!">پستهای قدیمی &larr;</a>
+            </div>
         </div>
     </div>
 </div>
