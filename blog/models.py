@@ -4,6 +4,7 @@ from operator import mod
 from pyexpat import model
 from statistics import mode
 from tabnanny import verbose
+from telnetlib import STATUS
 from turtle import position
 import django
 from django.db import models
@@ -12,6 +13,12 @@ from django.utils import timezone
 from extentions.utils import jalali_converter
 
 # Create your models here.
+
+
+# my manager
+class ArticleManager(models.Manager):
+    def published(self):
+        return self.filter(status='p')
 
 
 class Category(models.Model):
@@ -35,7 +42,8 @@ class Article(models.Model):
     )
     title = models.CharField(max_length=200, verbose_name="عنوان")
     slug = models.SlugField(max_length=100, unique=True, verbose_name="آدرس")
-    category = models.ManyToManyField(Category, verbose_name="دسته بندی")
+    category = models.ManyToManyField(
+        Category, verbose_name="دسته بندی", related_name="articles")
     description = models.TextField(verbose_name="متن مقاله")
     thumbnail = models.ImageField(upload_to="images", verbose_name="تصویر")
     publish = models.DateTimeField(
@@ -57,3 +65,8 @@ class Article(models.Model):
         return jalali_converter(self.publish)
 
     jpublish.short_description = "زمان انتشار"
+
+    def category_publised(self):
+        return self.category.filter(status=True)
+
+    objects = ArticleManager()
