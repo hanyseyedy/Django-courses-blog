@@ -42,8 +42,11 @@
                 <hr class="my-4" />
             {% endfor %}
             <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4 pager-botton">
-                <a class="btn btn-primary text-uppercase" href="#!">پستهای قدیمی &larr;</a>
+            <div class="mb-4 pager-botton">
+                {% if articles.has_previous %}
+                    <a class="btn btn-primary text-uppercase float-right" href="#!">پستهای جدید &rarr;</a>
+                {% endif %}
+                <a class="btn btn-primary text-uppercase float-left" href="#!">پستهای قدیمی &larr;</a>
             </div>
         </div>
     </div>
