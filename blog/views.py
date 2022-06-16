@@ -6,10 +6,9 @@ from .models import Article, Category
 # Create your views here.
 
 
-def home(request):
+def home(request, page=1):
     article_list = Article.objects.published()
     paginator = Paginator(article_list, 3)
-    page = request.GET.get('page')
     articles = paginator.get_page(page)
     context = {
         "articles": articles,
