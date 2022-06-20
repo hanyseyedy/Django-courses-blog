@@ -1,15 +1,16 @@
 from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import URLPattern, path
-from .views import home, api, detail, category
+from .views import ArticleList, api, ArticleDitail, CategoryList
 
 app_name = "blog"
 urlpatterns = [
-    path('', home, name="home"),
-    path('page/<int:page>', home, name="home"),
-    path('article/<slug:slug>', detail, name="detail"),
-    path('category/<slug:slug>', category, name="category"),
-    path('category/<slug:slug>/page/<int:page>', category, name="category"),
+    path('', ArticleList.as_view(), name="home"),
+    path('page/<int:page>', ArticleList.as_view(), name="home"),
+    path('article/<slug:slug>', ArticleDitail.as_view(), name="detail"),
+    path('category/<slug:slug>', CategoryList.as_view(), name="category"),
+    path('category/<slug:slug>/page/<int:page>',
+         CategoryList.as_view(), name="category"),
     path('api', api, name="api")
 ]
 

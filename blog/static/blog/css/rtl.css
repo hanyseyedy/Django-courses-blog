@@ -46,8 +46,7 @@ header.masthead .site-heading h1{
 
 .nav ul li {
     border-bottom: none;
-    height: 86px;
-    line-height: 86px;
+    line-height: 30px;
     font-size: 14px;
     display: inline-block;
     /* float: left; */
@@ -87,7 +86,7 @@ header.masthead .site-heading h1{
     /* newly added */
     height: auto;
     /* newly added */
-    line-height: 34px;
+    line-height: 5px;
     /* newly added */
 }
 
