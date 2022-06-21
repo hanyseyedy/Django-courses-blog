@@ -1,4 +1,5 @@
 from distutils.command.upload import upload
+from django.utils.html import format_html
 from email.policy import default
 from operator import mod
 from pyexpat import model
@@ -78,5 +79,9 @@ class Article(models.Model):
 
     def category_publised(self):
         return self.category.filter(status=True)
+
+    def thumbnail_tag(self):
+        return format_html("<img width='100' src='{}'>".format(self.thumbnail.url))
+    thumbnail_tag.short_description = "تصویر"
 
     objects = ArticleManager()
