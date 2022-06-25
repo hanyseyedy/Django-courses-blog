@@ -8,6 +8,10 @@ from .models import Article, Category
 # Register your models here.
 
 
+# admin header title change
+admin.site.site_header = "وبلاگ جنگویی من"
+
+
 @admin.action(description='انتشار مقالات انتخاب شده')
 def make_published(modeladmin, request, queryset):
     updated = queryset.update(status='p')
