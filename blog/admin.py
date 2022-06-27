@@ -52,7 +52,7 @@ class ArticleAdmin(admin.ModelAdmin):
     actions = [make_published, make_draft]
 
     def category_to_srt(self, obj):
-        return "، ".join([category.title for category in obj.category_publised()])
+        return "، ".join([category.title for category in obj.category.active()])
     category_to_srt.short_description = "دسته بندی‌ها"
 
 
