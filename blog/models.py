@@ -1,4 +1,5 @@
 from distutils.command.upload import upload
+from django.contrib.auth.models import User
 from django.utils.html import format_html
 from email.policy import default
 from operator import mod
@@ -51,6 +52,8 @@ class Article(models.Model):
         ('d', "پیش‌نویس"),
         ('p', 'منتشر شده')
     )
+    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL,
+                               related_name='articles', verbose_name='نویسنده')
     title = models.CharField(max_length=200, verbose_name="عنوان")
     slug = models.SlugField(max_length=100, unique=True, verbose_name="آدرس")
     category = models.ManyToManyField(

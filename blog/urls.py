@@ -1,7 +1,7 @@
 from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import URLPattern, path
-from .views import ArticleList, api, ArticleDitail, CategoryList
+from .views import ArticleList, AuthorList, api, ArticleDitail, CategoryList
 
 app_name = "blog"
 urlpatterns = [
@@ -11,6 +11,9 @@ urlpatterns = [
     path('category/<slug:slug>', CategoryList.as_view(), name="category"),
     path('category/<slug:slug>/page/<int:page>',
          CategoryList.as_view(), name="category"),
+    path('author/<slug:username>', AuthorList.as_view(), name="author"),
+    path('author/<slug:username>/page/<int:page>',
+         AuthorList.as_view(), name="author"),
     path('api', api, name="api")
 ]
 
